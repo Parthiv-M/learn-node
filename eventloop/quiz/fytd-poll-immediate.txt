@@ -1,2 +1,6 @@
 - Explain the order of execution in terms of the event loop for eventloop/immediate.js.
 - Will the order of execution change if timeout is changed to 0? Why or why not?
+
+This starts the IO process (event loop is in poll stage). As the subsequent callback executes
+(after the I/O operation completes), the set timeout inside the callback gets executed (after 5ms). 
+setImmediate() is executed right after the I/O operation is complete.

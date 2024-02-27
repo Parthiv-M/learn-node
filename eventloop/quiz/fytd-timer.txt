@@ -1,1 +1,7 @@
 - In eventloop/timer.js, what will be the order of execution? Briefly explain the order of execution w.r.t the event loop phases.
+
+The foo() function calls are execeuted first. This causes console.log('foo') to be called first every time, after which the baz()
+method gets invoked. The setTimeout is skipped each time because it is an asynchronous function and is called at one end of the event loop.
+
+The setTimeout itself is a callback function with time as 0, which moves it to the "pending calllbacks" phase. The event loop does not
+stay at the poll phase as there are no I/O operations.

@@ -1,1 +1,5 @@
 - In eventloop/poll.js, what will be the order of execution? Briefly explain the order of execution w.r.t the event loop phases.
+
+The first function call encountered is an async operation and contains a callback function. So this is automatically pushed to the
+pending callbacks queue after the read operation on the file is completed. Then the synchronous tasks like the foo() function and
+the console.log('done') are executed. After this, the pending callbacks are executed.
